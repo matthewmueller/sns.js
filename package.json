@@ -1,8 +1,8 @@
 {
   "name": "sns.js",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "simple publish and parse module for SNS",
-  "keywords": [],
+  "keywords": ["sns", "amazon", "aws"],
   "author": "Matthew Mueller <mattmuelle@gmail.com>",
   "repository": {
     "type": "git",
@@ -17,7 +17,6 @@
     "babel-eslint": "6.1.2",
     "mocha": "3.0.2",
     "nyc": "8.1.0",
-    "should": "*",
     "snazzy": "5.0.0"
   },
   "main": "src/index",
