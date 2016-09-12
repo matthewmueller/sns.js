@@ -17,6 +17,8 @@ AWS_SECRET_ACCESS_KEY
 AWS_REGION
 ```
 
+Use in your code:
+
 ```js
 const SNS = require('sns.js')
 
