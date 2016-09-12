@@ -20,8 +20,8 @@ AWS_REGION
 ```js
 const SNS = require('sns.js')
 
-// publish onto SNS
-SNS.publish(topicArn, message)
+// publish onto SNS, returns a promise
+await SNS.publish(topicArn, message)
 
 // derive the message from an SNS event
 let message = SNS.parse(event)
