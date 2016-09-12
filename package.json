@@ -1,8 +1,12 @@
 {
   "name": "sns.js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "simple publish and parse module for SNS",
-  "keywords": ["sns", "amazon", "aws"],
+  "keywords": [
+    "sns",
+    "amazon",
+    "aws"
+  ],
   "author": "Matthew Mueller <mattmuelle@gmail.com>",
   "repository": {
     "type": "git",
