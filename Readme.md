@@ -5,11 +5,13 @@
 
 ## Getting Started
 
+Install this module:
+
 ```js
 npm install sns.js
 ```
 
-Make sure these variables are in your `process.env`
+Make sure these variables are in your `process.env`:
 
 ```
 AWS_ACCESS_KEY_ID
