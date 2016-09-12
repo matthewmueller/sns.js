@@ -1,0 +1,43 @@
+{
+  "name": "sns.js",
+  "version": "0.0.1",
+  "description": "simple publish and parse module for SNS",
+  "keywords": [],
+  "author": "Matthew Mueller <mattmuelle@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/MatthewMueller/sns.js.git"
+  },
+  "dependencies": {
+    "aws-sdk": "2.6.1",
+    "lambda-sns-event-message": "1.0.2"
+  },
+  "devDependencies": {
+    "async-to-gen": "1.1.0",
+    "babel-eslint": "6.1.2",
+    "mocha": "3.0.2",
+    "nyc": "8.1.0",
+    "should": "*",
+    "snazzy": "5.0.0"
+  },
+  "main": "src/index",
+  "scripts": {
+    "test:watch": "mocha -w",
+    "test:cov": "nyc --reporter=lcov mocha && open coverage/lcov-report/index.html",
+    "test:only": "mocha",
+    "test": "nyc mocha",
+    "lint": "snazzy",
+    "pretest": "npm run lint"
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "globals": [
+      "describe",
+      "it",
+      "before",
+      "beforeEach",
+      "after",
+      "afterEach"
+    ]
+  }
+}
