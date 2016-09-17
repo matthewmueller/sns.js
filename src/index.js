@@ -5,18 +5,19 @@
  */
 
 const parse = require('lambda-sns-event-message')
+const SNS = require('aws-sdk/clients/sns')
+const assign = require('object-assign')
 const assert = require('assert')
-const AWS = require('aws-sdk')
 
 /**
  * Configuration
  */
 
-const config = new AWS.Config({
+const config = {
   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
   region: process.env.AWS_REGION
-})
+}
 
 /**
  * Parse an incoming message (ex. Lambda)
@@ -39,7 +40,7 @@ exports.parse = function (message) {
 exports.publish = function (topicArn, message) {
   assert(topicArn, 'publish requires an SNS topic ARN')
 
-  let sns = new AWS.SNS(config)
+  let sns = new SNS(config)
   let p = new Deferred()
   let params = {}
 
