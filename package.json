@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "aws-sdk": "2.6.1",
+    "deferral": "1.0.0",
     "lambda-sns-event-message": "1.0.2",
     "object-assign": "4.1.0"
   },

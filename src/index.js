@@ -7,6 +7,7 @@
 const parse = require('lambda-sns-event-message')
 const SNS = require('aws-sdk/clients/sns')
 const assign = require('object-assign')
+const Deferred = require('deferral')
 const assert = require('assert')
 
 /**
@@ -59,17 +60,46 @@ exports.publish = function (topicArn, message) {
 }
 
 /**
- * Create a Deferred object
+ * Wrap a payload in a SNS record
  *
- * @return {Deferred}
+ * @param {Object} payload
+ * @return {Object} message
  */
 
-function Deferred () {
-  const p = new Promise(function (resolve, reject) {
-    this.resolve = resolve
-    this.reject = reject
-  }.bind(this))
-
-  this.then = p.then.bind(p)
-  this.catch = p.catch.bind(p)
+exports.wrap = function (payload) {
+  return {
+    'Records': [
+      {
+        'EventSource': 'aws:sns',
+        'EventVersion': '1.0',
+        'EventSubscriptionArn': 'arn:aws:sns:us-west-2:123456789012:article-import-dev:yyy',
+        'Sns': {
+          'Type': 'Notification',
+          'MessageId': 'zzz',
+          'TopicArn': 'arn:aws:sns:us-west-2:123456789012:article-import-dev',
+          'Subject': null,
+          'Message': JSON.stringify(payload),
+          'Timestamp': '2016-09-12T06:40:55.990Z',
+          'SignatureVersion': '1',
+          'Signature': 'sig',
+          'SigningCertUrl': 'cert',
+          'UnsubscribeUrl': 'unsub',
+          'MessageAttributes': {
+            'AWS.SNS.MOBILE.MPNS.Type': {
+              'Type': 'String',
+              'Value': 'token'
+            },
+            'AWS.SNS.MOBILE.MPNS.NotificationClass': {
+              'Type': 'String',
+              'Value': 'realtime'
+            },
+            'AWS.SNS.MOBILE.WNS.Type': {
+              'Type': 'String',
+              'Value': 'wns/badge'
+            }
+          }
+        }
+      }
+    ]
+  }
 }

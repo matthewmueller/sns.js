@@ -58,8 +58,13 @@ describe('index', () => {
   it('should publish', async () => {
     // need to test this on AWS's side
     await SNS.publish(process.env.AWS_SNS_TOPIC_ARN, {
-      hello: "world!"
+      hello: 'world!'
     })
+  })
+
+  it('should support wrapping payloads for testing', () => {
+    const payload = { hello: 'world' }
+    assert.deepEqual(SNS.parse(SNS.wrap(payload)), payload)
   })
 })
 
